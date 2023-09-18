@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -40,6 +41,7 @@ public class ContactRecViewAdaptor extends RecyclerView.Adapter<RecyclerView.Vie
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ViewHolder myHolder = (ViewHolder) holder;
         myHolder.txtName.setText(contacts.get(position).getName());
+        myHolder.txtEmail.setText(contacts.get(position).getEmail());
         myHolder.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,13 +75,13 @@ public class ContactRecViewAdaptor extends RecyclerView.Adapter<RecyclerView.Vie
     //responsible for holding data
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView txtName;
-        private RelativeLayout parent;
+        private TextView txtName, txtEmail;
+        private CardView parent;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             txtName = itemView.findViewById(R.id.txtName);
-
+            txtEmail = itemView.findViewById(R.id.txtEmail);
             parent = itemView.findViewById(R.id.parent);
         }
     }
